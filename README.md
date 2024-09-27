@@ -2,6 +2,10 @@
 
 This repository contains solutions to various SQL questions, covering topics from **beginner** to **advanced** levels. Each solution is provided as a `.sql` file and is grouped by difficulty level. You can find questions on topics like data selection, aggregation, joins, subqueries, and more.
 
+## SQL Questions
+-  [IMDB Rating](#imdb-rating)
+
+
 ## Contents
 
 - [Beginner](#beginner)
@@ -11,7 +15,19 @@ This repository contains solutions to various SQL questions, covering topics fro
 ## Beginner
 Basic SQL questions covering topics like simple `SELECT` queries, `WHERE` clauses, `ORDER BY`, and basic aggregate functions.
 
-- [Question 1](./sql_solutions/beginner/question1.sql): Write a query to select all records from the `employees` table.
+### IMDB Rating
+- [Question 1](./sql_solutions/beginner/question1.sql): From the IMDb dataset, print the title and rating of those movies which have a genre starting from 'C' released in 2014 with a budget higher than 4 Crore.
+
+```sql
+SELECT imdb.title, imdb.rating
+FROM imdb
+JOIN genre ON imdb.movie_id = genre.movie_id
+WHERE genre.genre LIKE 'C%'
+  AND imdb.title LIKE '%2014%'
+  AND imdb.budget > 40000000;
+```
+
+
 - [Question 2](./sql_solutions/beginner/question2.sql): Write a query to find employees whose salary is above 5000.
   
 ## Intermediate
