@@ -127,6 +127,10 @@ Feel free to contribute your own SQL solutions or improve the existing ones. Her
 2. Create a new branch for your feature or fix.
 3. Submit a pull request with a description of the changes.
 
+
+## References
+1. [Naukri.com](https://www.naukri.com/code360/problems/)
+
 ## License
 
 This repository is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
