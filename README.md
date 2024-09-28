@@ -6,8 +6,9 @@ This repository contains solutions to various SQL questions, covering topics fro
 1.  [IMDB Rating](#imdb-rating)
 2.  [IMDb Metacritic Rating](#imdb-metacritic-rating)
 3.  [Students DB](#students-db)
-4.   [IMDb Genre](#imdb-genre)
-5.   [Sales Executive](#sales-executive)
+4.  [IMDb Genre](#imdb-genre)
+5.  [Sales Executive](#sales-executive)   
+6.  [IMDb Max Weighted Rating](#imdb-max-weighted-rating)
 
 
 ## Contents
@@ -117,7 +118,34 @@ WHERE sales_id NOT IN (
     )
 );
 ```
+### IMDb Max Weighted Rating
 
+- [Question 3](./sql_solutions/beginner/question3.sql): Print the genre and the maximum weighted rating among all the movies of that genre released in 2014 per genre. (Download the dataset from console)
+
+Note:
+1. Do not print any row where either genre or the weighted rating is empty/null.
+2.  weighted_rating = avgerge of (rating + metacritic/10.0)
+3. Keep the name of the columns as 'genre' and 'weighted_rating'
+4. The genres should be printed in alphabetical order.
+
+```sql
+SELECT 
+    genre.genre, 
+    MAX((imdb.rating + imdb.metacritic / 10.0)/2) AS weighted_rating
+FROM 
+    genre
+JOIN 
+    imdb ON imdb.movie_id = genre.movie_id
+WHERE 
+    imdb.title like '%2014%'
+    AND genre.genre IS NOT NULL
+    AND imdb.rating IS NOT NULL
+    AND imdb.metacritic IS NOT NULL
+GROUP BY 
+    genre.genre
+ORDER BY 
+    genre.genre ASC;
+```
 
 ## Intermediate
 Intermediate-level SQL questions including `JOINs`, `GROUP BY`, `HAVING`, and more complex aggregates.
