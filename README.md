@@ -10,7 +10,8 @@ This repository contains solutions to various SQL questions, covering topics fro
 5.  [Sales Executive](#sales-executive)   
 6.  [IMDb Max Weighted Rating](#imdb-max-weighted-rating)
 7.  [Swap Salary](#swap-salary)
-8.  [Second Highest Salary](#second-highest-salary) 
+8.  [Second Highest Salary](#second-highest-salary)
+9.  [Big Countriesy](#big-countries) 
 
 
 ## Contents
@@ -179,7 +180,40 @@ update salary
 
   end;
 ```
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Big Countries
+- [Question 6](./sql_solutions/intermediate/question6.sql): There is a table World
+
+
+| name            | continent  | area       | population   | gdp         |
+|-----------------|------------|------------|--------------|-------------|
+
+| Afghanistan     | Asia       | 652230     | 25500100    |20343000  | 
+| Albania         | Europe     | 28748      | 2831741     | 12960000  |
+| Algeria         | Africa     | 2381741    | 37100000    | 188681000 |    
+| Andorra         | Europe     | 468        | 78115       | 3712000   |
+| Angola          | Africa     | 1246700    | 20609294    | 100990000 |    
+
+
+A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.
+
+Write a SQL solution to output big countries' name, population and area.
+
+For example, according to the above table, we should output:
+
+
+| name         | population  | area         |
+|--------------|-------------|--------------|
+| Afghanistan  | 25500100    | 652230       |
+| Algeria      | 37100000    | 2381741      |
+
+```sql
+select name, population, area from world
+where area > 300000
+and population > 25000000;
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Intermediate
 Intermediate-level SQL questions including `JOINs`, `GROUP BY`, `HAVING`, and more complex aggregates.
 
