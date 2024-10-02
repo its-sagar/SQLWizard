@@ -9,6 +9,7 @@ This repository contains solutions to various SQL questions, covering topics fro
 4.  [IMDb Genre](#imdb-genre)
 5.  [Sales Executive](#sales-executive)   
 6.  [IMDb Max Weighted Rating](#imdb-max-weighted-rating)
+7.  [IMDb Max Weighted Rating](#swap-salary) 
 
 
 ## Contents
@@ -16,6 +17,7 @@ This repository contains solutions to various SQL questions, covering topics fro
 - [Beginner](#beginner)
 - [Intermediate](#intermediate)
 - [Advanced](#advanced)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Beginner
 Basic SQL questions covering topics like simple `SELECT` queries, `WHERE` clauses, `ORDER BY`, and basic aggregate functions.
@@ -120,7 +122,7 @@ WHERE sales_id NOT IN (
 ```
 ### IMDb Max Weighted Rating
 
-- [Question 3](./sql_solutions/beginner/question3.sql): Print the genre and the maximum weighted rating among all the movies of that genre released in 2014 per genre. (Download the dataset from console)
+- [Question 4](./sql_solutions/beginner/question4.sql): Print the genre and the maximum weighted rating among all the movies of that genre released in 2014 per genre. (Download the dataset from console)
 
 Note:
 1. Do not print any row where either genre or the weighted rating is empty/null.
@@ -147,6 +149,36 @@ ORDER BY
     genre.genre ASC;
 ```
 
+## Swap Salary
+
+- [Question 5](./sql_solutions/beginner/question5.sql): Table: Salary
+
+
+| Column Name | Type     |
+|-------------|----------|
+| id          | int      |
+| name        | varchar  |
+| sex         | ENUM     |
+| salary      | int      |
+
+id is the primary key for this table.
+The sex column is ENUM value of type ('m', 'f').
+The table contains information about an employee.
+
+```sql
+update salary
+
+ set sex=case 
+
+ when sex='m' 
+
+ then 'f'
+
+  else 'm'
+
+  end;
+```
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Intermediate
 Intermediate-level SQL questions including `JOINs`, `GROUP BY`, `HAVING`, and more complex aggregates.
 
@@ -190,7 +222,7 @@ order by genre.genre asc;
 ```
 
 
-- [Question 2](./sql_solutions/advanced/question2.sql): Write a query to rank employees by their performance score using window functions.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Datasets
 
