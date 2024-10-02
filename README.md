@@ -9,7 +9,8 @@ This repository contains solutions to various SQL questions, covering topics fro
 4.  [IMDb Genre](#imdb-genre)
 5.  [Sales Executive](#sales-executive)   
 6.  [IMDb Max Weighted Rating](#imdb-max-weighted-rating)
-7.  [IMDb Max Weighted Rating](#swap-salary) 
+7.  [Swap Salary](#swap-salary)
+8.  [Second Highest Salary](#second-highest-salary) 
 
 
 ## Contents
@@ -194,9 +195,31 @@ WHERE genre.genre LIKE 'C%'
   AND imdb.title LIKE '%2014%'
   AND imdb.budget > 40000000;
 ```
+## Second Highest Salary
+- [Question 2](./sql_solutions/intermediate/question2.sql):Write a SQL query to get the second highest salary from the 
+Employee table.
 
-- [Question 2](./sql_solutions/intermediate/question2.sql): Write a query to find the average salary of employees grouped by department.
 
+| Id | Salary |
+-----|--------|
+| 1  | 100    |
+| 2  | 200    |
+| 3  | 300    |
+
+For example, given the above Employee table, the query should return 200 as the second highest salary. If there is no second highest salary, then the query should return null.
+
+
+| SecondHighestSalary |
+|---------------------|
+| 200                 |
+
+```sql
+select salary from Employee
+order by salary desc
+offset 1
+limit 1;
+```
+-----------------------------------------------------------------------------------------------------------------------------------------
 ## Advanced
 Advanced SQL questions covering `subqueries`, `window functions`, `CTEs`, and performance optimizations.
 
