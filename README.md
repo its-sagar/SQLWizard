@@ -14,7 +14,8 @@ This repository contains solutions to various SQL questions, covering topics fro
 9.  [Big Countriesy](#big-countries) 
 10. [Combine Two Tables](#combine-two-tables) 
 11. [Director's Actor](#directors-actor)    
-12. [Rank Scores](#rank-scores)
+12. [Rank Scores](#rank-scores) 
+13. [Department Highest Salary](#department-highest-salary)
 
 
 ## Contents
@@ -388,7 +389,51 @@ order by salary desc
 offset 1
 limit 1;
 ```
------------------------------------------------------------------------------------------------------------------------------------------
+## Department Highest Salary
+
+- [Question 3](./sql_solutions/intermediate/question3.sql): The Employee table holds all employees. Every employee has an Id, a salary, and there is also a column for the department Id.
+
+
+ | Id | Name  | Salary | DepartmentId |
+ |----|-------|--------|--------------|
+ | 1  | Joe   | 70000  | 1            |
+ | 2  | Jim   | 90000  | 1            |
+ | 3  | Henry | 80000  | 2            |
+ | 4  | Sam   | 60000  | 2            |
+ | 5  | Max   | 90000  | 1            |
+
+The Department table holds all departments of the company.
+
+
+ | Id | Name     |
+ +----+----------+
+ | 1  | IT       |
+ | 2  | Sales    |
+
+  Write a SQL query to find employees who have the highest salary in each of the departments. For the above tables, your SQL query should return the following rows (order of rows does not matter).
+
+
+| Department | Employee | Salary |
+|------------|----------|--------|
+| IT         | Max      | 90000  |
+| IT         | Jim      | 90000  |
+| Sales      | Henry    | 80000  |
+
+Explanation:
+
+Max and Jim both have the highest salary in the IT department and Henry has the highest salary in the Sales department.
+
+```sql
+select dept.name as "Department",emp.name as "Employee",salary as "salary" from Employee emp 
+join department dept on emp.DepartmentId = dept.id
+
+where salary in (select max(salary) from employee e group by DepartmentId)
+
+order by salary desc,emp.name desc;
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## Advanced
 Advanced SQL questions covering `subqueries`, `window functions`, `CTEs`, and performance optimizations.
 
