@@ -406,7 +406,7 @@ The Department table holds all departments of the company.
 
 
  | Id | Name     |
- +----+----------+
+ |----|----------|
  | 1  | IT       |
  | 2  | Sales    |
 
