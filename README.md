@@ -13,7 +13,8 @@ This repository contains solutions to various SQL questions, covering topics fro
 8.  [Second Highest Salary](#second-highest-salary)
 9.  [Big Countriesy](#big-countries) 
 10. [Combine Two Tables](#combine-two-tables) 
-11. [Director's Actor](#directors-actor)
+11. [Director's Actor](#directors-actor)    
+12. [Rank Scores](#rank-scores)
 
 
 ## Contents
@@ -298,7 +299,56 @@ Result table:
 
 
 The only pair is (1, 1) where they co-worked exactly 3 times.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+```sql
+SELECT 
+    actor_id, 
+    director_id
+FROM 
+    ActorDirector
+GROUP BY 
+    actor_id, 
+    director_id
+    HAVING 
+    COUNT(director_id) >= 3;
+```
+
+## Rank Scores
+- [Question 9](./sql_solutions/beginner/question9.sql): Write a SQL query to rank scores. If there is a tie between two scores, both should have the same ranking. Note that after a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no "holes" between ranks.
+
+
+| Id | Score |
+|----|-------|
+| 1  | 3.50  |
+| 2  | 3.65  |
+| 3  | 4.00  |
+| 4  | 3.85  |
+| 5  | 4.00  |
+| 6  | 3.65  |
+
+For example, given the above Scores table, your query should generate the following report (order by highest score):
+
+
+| score | Rank    |
+|-------|---------|
+| 4.00  | 1       |
+| 4.00  | 1       |
+| 3.85  | 2       |
+| 3.65  | 3       |
+| 3.65  | 3       |
+| 3.50  | 4       |
+
+```sql
+SELECT  
+    Score, 
+    DENSE_RANK() OVER (ORDER BY Score DESC) AS "RANK"
+FROM 
+    Scores;
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 ## Intermediate
 Intermediate-level SQL questions including `JOINs`, `GROUP BY`, `HAVING`, and more complex aggregates.
 
