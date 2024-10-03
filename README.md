@@ -12,7 +12,8 @@ This repository contains solutions to various SQL questions, covering topics fro
 7.  [Swap Salary](#swap-salary)
 8.  [Second Highest Salary](#second-highest-salary)
 9.  [Big Countriesy](#big-countries) 
-10. [Combine Two Tables](#combine-two-tables)
+10. [Combine Two Tables](#combine-two-tables) 
+11. [Director's Actor](#directors-actor)
 
 
 ## Contents
@@ -183,7 +184,7 @@ update salary
 ```
 
 ## Big Countries
-- [Question 6](./sql_solutions/intermediate/question6.sql): There is a table World
+- [Question 6](./sql_solutions/beginner/question6.sql): There is a table World
 
 
 | name            | continent  | area       | population   | gdp         |
@@ -216,7 +217,7 @@ and population > 25000000;
 
 ## Combine Two Tables
 
-- [Question 7](./sql_solutions/intermediate/question7.sql): Table: Person
+- [Question 7](./sql_solutions/beginner/question7.sql): Table: Person
 
 
 | Column Name | Type    |
@@ -256,6 +257,47 @@ left JOIN
 ON 
     p.PersonId = a.PersonId;
 ```
+
+## Director's Actor
+- [Question 8](./sql_solutions/beginner/question8.sql): Table: ActorDirector
+
+
+
+| Column Name | Type    |
+|-------------|---------|
+| actor_id    | int     |
+| director_id | int     |
+| timestamp   | int     |
+
+
+Timestamp is the primary key column for this table.
+
+
+Write a SQL query for a report that provides the pairs (actor_id, director_id) where the actor have co-worked with the director at least 3 times.
+
+Example:
+
+ActorDirector table:
+
+| actor_id    | director_id | timestamp   |
+|-------------|-------------|-------------|
+| 1           | 1           | 0           |
+| 1           | 1           | 1           |
+| 1           | 1           | 2           |
+| 1           | 2           | 3           |
+| 1           | 2           | 4           |
+| 2           | 1           | 5           |
+| 2           | 1           | 6           |
+
+
+Result table:
+
+| actor_id    | director_id |
+|-------------|-------------|
+| 1           | 1           |
+
+
+The only pair is (1, 1) where they co-worked exactly 3 times.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Intermediate
 Intermediate-level SQL questions including `JOINs`, `GROUP BY`, `HAVING`, and more complex aggregates.
