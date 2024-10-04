@@ -438,7 +438,7 @@ order by salary desc,emp.name desc;
 
 ## Managers with at Least 5 Direct Reports
 
-- [Question 3](./sql_solutions/intermediate/question3.sql): The Employee table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.
+- [Question 4](./sql_solutions/intermediate/question4.sql): The Employee table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.
 
 
 |Id    |Name      |Department |ManagerId |
