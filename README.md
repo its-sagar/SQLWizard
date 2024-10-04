@@ -15,7 +15,8 @@ This repository contains solutions to various SQL questions, covering topics fro
 10. [Combine Two Tables](#combine-two-tables) 
 11. [Director's Actor](#directors-actor)    
 12. [Rank Scores](#rank-scores) 
-13. [Department Highest Salary](#department-highest-salary)
+13. [Department Highest Salary](#department-highest-salary) 
+14. [Rising Temperature](#rising-temperature)
 
 
 ## Contents
@@ -458,7 +459,62 @@ group by genre.genre
 order by genre.genre asc;
 ```
 
+## Rising Temperature
 
+- [Question 2](./sql_solutions/advanced/question2.sql): Table: Weather
+
+
+| Column Name   | Type    |
+|---------------|---------|
+| id            | int     |
+| recordDate    | date    |
+| temperature   | int     |
+
+id is the primary key for this table.
+This table contains information about the temperature in a certain day.
+
+
+Write an SQL query to find all dates' id with higher temperature compared to its previous dates (yesterday).
+
+Return the result table in any order.
+
+The query result format is in the following example:
+
+Weather
+
+| id | recordDate | Temperature |
+|----|------------|-------------|
+| 1  | 2015-01-01 | 10          |
+| 2  | 2015-01-02 | 25          |
+| 3  | 2015-01-03 | 20          |
+| 4  | 2015-01-04 | 30          |
+
+
+Result table:
+
+| Id |
+|----|
+| 2  |
+| 4  |
+
+
+In 2015-01-02, temperature was higher than the previous day (10 -> 25).
+In 2015-01-04, temperature was higher than the previous day (20 -> 30).
+
+
+```sql
+SELECT temp.id "Id"
+
+FROM ( SELECT id ,recordDate ,Temperature,
+
+LAG(Temperature) OVER (ORDER BY recordDate ) as lag
+
+FROM Weather) as temp
+
+where temp.lag<temp.Temperature
+
+ORDER by temp.id;
+```
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Datasets
