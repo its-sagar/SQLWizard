@@ -18,7 +18,8 @@ This repository contains solutions to various SQL questions, covering topics fro
 13. [Department Highest Salary](#department-highest-salary) 
 14. [Rising Temperature](#rising-temperature) 
 15. [Consecutive Numbers](#consecutive-numbers) 
-16. [Winning Candidate](#winning-candidate)
+16. [Winning Candidate](#winning-candidate) 
+17. [Managers with at Least 5 Direct Reports](#managers-with-at-least-5-direct-reports)
 
 
 ## Contents
@@ -433,6 +434,42 @@ join department dept on emp.DepartmentId = dept.id
 where salary in (select max(salary) from employee e group by DepartmentId)
 
 order by salary desc,emp.name desc;
+```
+
+## Managers with at Least 5 Direct Reports
+
+- [Question 3](./sql_solutions/intermediate/question3.sql): The Employee table holds all employees including their managers. Every employee has an Id, and there is also a column for the manager Id.
+
+
+|Id    |Name      |Department |ManagerId |
+|------|----------|-----------|----------|
+|101   |John      |A          |null      |
+|102   |Dan       |A          |101       |
+|103   |James     |A          |101       |
+|104   |Amy       |A          |101       |
+|105   |Anne      |A          |101       |
+|106   |Ron       |B          |101       |
+
+Given the Employee table, write a SQL query that finds out managers with at least 5 direct report. For the above table, your SQL query should return:
+
+
+| Name  |
+|-------|
+| John  |
+
+Note:
+No one would report to himself
+
+```sql
+SELECT name 
+FROM Employee
+WHERE id IN (
+    SELECT ManagerId 
+    FROM Employee
+    WHERE ManagerId is not null
+    GROUP BY ManagerId
+    HAVING COUNT(*) >= 5
+);
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
