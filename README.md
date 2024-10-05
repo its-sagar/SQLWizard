@@ -20,7 +20,7 @@ This repository contains solutions to various SQL questions, covering topics fro
 15. [Consecutive Numbers](#consecutive-numbers) 
 16. [Winning Candidate](#winning-candidate) 
 17. [Managers with at Least 5 Direct Reports](#managers-with-at-least-5-direct-reports)
-18. [Spotify Sessions](#spotify-sessions)  Number of Calls Between Two Persons
+18. [Spotify Sessions](#spotify-sessions)
 19. [Number of Calls Between Two Persons](#number-of-calls-between-two-persons) 
 
 
