@@ -24,7 +24,7 @@ This repository contains solutions to various SQL questions, covering topics fro
 19. [Number of Calls Between Two Persons](#number-of-calls-between-two-persons) 
 
 
-## Contents
+## Difficulty Level
 
 - [Beginner](#beginner)
 - [Intermediate](#intermediate)
